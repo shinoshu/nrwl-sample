@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "projects",
+  "newProjectRoot": "",
   "projects": {
     "nrwl-sample": {
       "projectType": "application",
@@ -10,25 +10,25 @@
           "style": "scss"
         }
       },
-      "root": "",
-      "sourceRoot": "src",
+      "root": "apps/nrwl-sample",
+      "sourceRoot": "apps/nrwl-sample/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/nrwl-sample",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
+            "outputPath": "dist/apps/nrwl-sample",
+            "index": "apps/nrwl-sample/src/index.html",
+            "main": "apps/nrwl-sample/src/main.ts",
+            "polyfills": "apps/nrwl-sample/src/polyfills.ts",
+            "tsConfig": "apps/nrwl-sample/tsconfig.app.json",
             "aot": false,
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "apps/nrwl-sample/src/favicon.ico",
+              "apps/nrwl-sample/src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "apps/nrwl-sample/src/styles.scss"
             ],
             "scripts": []
           },
@@ -36,8 +36,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "apps/nrwl-sample/src/environments/environment.ts",
+                  "with": "apps/nrwl-sample/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -84,16 +84,16 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
+            "main": "apps/nrwl-sample/src/test.ts",
+            "polyfills": "apps/nrwl-sample/src/polyfills.ts",
+            "tsConfig": "apps/nrwl-sample/tsconfig.spec.json",
+            "karmaConfig": "apps/nrwl-sample/karma.conf.js",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "apps/nrwl-sample/src/favicon.ico",
+              "apps/nrwl-sample/src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "apps/nrwl-sample/src/styles.scss"
             ],
             "scripts": []
           }
@@ -102,25 +102,39 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
+              "apps/nrwl-sample/tsconfig.app.json",
+              "apps/nrwl-sample/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
             ]
           }
-        },
+        }
+      }
+    },
+    "nrwl-sample-e2e": {
+      "projectType": "application",
+      "root": "apps/nrwl-sample-e2e",
+      "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
+            "protractorConfig": "apps/nrwl-sample-e2e/protractor.conf.js",
             "devServerTarget": "nrwl-sample:serve"
           },
           "configurations": {
             "production": {
               "devServerTarget": "nrwl-sample:serve:production"
             }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/nrwl-sample-e2e/tsconfig.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
